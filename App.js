@@ -36,7 +36,10 @@ class MidView extends React.Component{
   render(){
     return(
       <View>
-        <DataComponent data = "Weight"/>
+        <DataComponent data = "Weight" unit = "lbs"/>
+        <DataComponent data = "Height" unit = "inches"/>
+        <DataComponent data = "Age" unit = "years"/>
+        <DataComponent data = "Duration of Exercise" unit = "minutes"/>
       </View>
     );
   }
@@ -46,9 +49,14 @@ class MidView extends React.Component{
 class DataComponent extends React.Component{
   render(){
     return(
-      <Text>
-        {this.props.data}
-      </Text>
+      <View>
+        <Text>
+          {this.props.data} ({this.props.unit}):
+        </Text>
+        <TextInput
+          placeholder = {this.props.data}
+        />
+      </View>
     );
   }
 }
