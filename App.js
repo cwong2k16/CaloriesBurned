@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, Text, TextInput, Picker, View } from 'react-native';
 import styles from './Style'
 
 export default class App extends React.Component {
@@ -40,6 +40,10 @@ class MidView extends React.Component{
         <DataComponent data = "Height" unit = "inches"/>
         <DataComponent data = "Age" unit = "years"/>
         <DataComponent data = "Duration of Exercise" unit = "minutes"/>
+        <Picker>
+          <Picker.Item label="Biking" value="8" />
+          <Picker.Item label="Boxing" value="10" />
+        </Picker>
       </View>
     );
   }
