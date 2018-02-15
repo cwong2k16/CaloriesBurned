@@ -5,19 +5,28 @@ import styles from './Style'
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Container/>
+      <MainContainer/>
+    );
+  }
+}
+
+class MainContainer extends React.Component {
+  render(){
+    return (
+      /* Generate the container for the React-Native app */
+      <View>
+        <TopView/>
       </View>
     );
   }
 }
 
-class InnerText extends React.Component {
+class TopView extends React.Component{
   render(){
     return (
-      <View>
-        {/* Generate the container for the React-Native app */}
-      </View>
+      <Text style={styles.topView}>
+        Calorie Burned Calculator
+      </Text>
     );
   }
 }
