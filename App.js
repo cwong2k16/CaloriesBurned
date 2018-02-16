@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, Picker, View, Button } from 'react-native';
+import { StyleSheet, Image, Text, TextInput, Picker, View, Button, ScrollView } from 'react-native';
 import styles from './Style'
 
 export default class App extends React.Component {
@@ -14,11 +14,11 @@ class MainContainer extends React.Component {
   render(){
     return (
       /* Generate the container for the React-Native app */
-      <View style = {styles.mainContainer}>
+      <ScrollView>
         <TopView/>
         <MidView/>
         <BottomView/>
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -37,6 +37,7 @@ class MidView extends React.Component{
   render(){
     return(
       <View>
+        <Image height = "33%" width = "33%" source={require('./dumbbells.png')} />
         <DataComponent data = "Weight" unit = "lbs"/>
         <DataComponent data = "Height" unit = "inches"/>
         <DataComponent data = "Age" unit = "years"/>

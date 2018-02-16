@@ -1,11 +1,6 @@
 import React, {StyleSheet} from 'react-native'
 
 export default StyleSheet.create({
-    mainContainer:{
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-    },
     topView:{
         textAlign: 'center',
         paddingTop: '15%',
