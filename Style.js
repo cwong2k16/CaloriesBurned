@@ -9,6 +9,10 @@ export default StyleSheet.create({
         backgroundColor: '#000',
         color: "#fff"
     },
+    textSection:{
+        paddingTop: '5%',
+        paddingBottom: '5%'
+    },
     container: {
         flex: 1,
         backgroundColor: '#fff',

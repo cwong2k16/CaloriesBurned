@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, Picker, View } from 'react-native';
+import { StyleSheet, Text, TextInput, Picker, View, Button } from 'react-native';
 import styles from './Style'
 
 export default class App extends React.Component {
@@ -17,6 +17,7 @@ class MainContainer extends React.Component {
       <View>
         <TopView/>
         <MidView/>
+        <BottomView/>
       </View>
     );
   }
@@ -49,16 +50,30 @@ class MidView extends React.Component{
   }
 }
 
+class BottomView extends React.Component{
+  render(){
+    return(
+      <View>
+        <Button title = "Add">
+        </Button>
+        <Button title = "Calculate" color = "#F44336">
+        </Button>
+      </View>
+    );
+  }
+}
+
 /* Useful for regenerating similar TextInput components but with different purposes */
 class DataComponent extends React.Component{
   render(){
     return(
-      <View>
+      <View style = {styles.textSection}>
         <Text>
           {this.props.data} ({this.props.unit}):
         </Text>
         <TextInput
           placeholder = {this.props.data}
+          keyboardType = "numeric"
         />
       </View>
     );
