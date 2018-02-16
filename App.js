@@ -37,7 +37,7 @@ class MidView extends React.Component{
   render(){
     return(
       <View>
-        <Image height = "33%" width = "33%" source={require('./dumbbells.png')} />
+        <ImageComponent/>
         <DataComponent data = "Weight" unit = "lbs"/>
         <DataComponent data = "Height" unit = "inches"/>
         <DataComponent data = "Age" unit = "years"/>
@@ -74,6 +74,17 @@ class DataComponent extends React.Component{
           placeholder = {this.props.data}
           keyboardType = "numeric"
         />
+      </View>
+    );
+  }
+}
+
+class ImageComponent extends React.Component{
+  render(){
+    return(
+      <View style = {{alignItems:"center"}}>
+        <Image source = {require("./dumbbells.png")}>
+        </Image>
       </View>
     );
   }
