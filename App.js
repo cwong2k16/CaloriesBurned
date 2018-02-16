@@ -54,9 +54,9 @@ class BottomView extends React.Component{
   render(){
     return(
       <View>
-        <Button title = "Add">
+        <Button title = "Add" onPress = { ()=> {alert("hey");}}>
         </Button>
-        <Button title = "Calculate" color = "#F44336">
+        <Button title = "Calculate" color = "#F44336" onPress = { ()=> {alert("heey");}}>
         </Button>
       </View>
     );
