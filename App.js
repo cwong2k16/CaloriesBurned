@@ -14,7 +14,7 @@ class MainContainer extends React.Component {
   render(){
     return (
       /* Generate the container for the React-Native app */
-      <View>
+      <View style = {styles.mainContainer}>
         <TopView/>
         <MidView/>
         <BottomView/>
@@ -55,8 +55,6 @@ class BottomView extends React.Component{
     return(
       <View>
         <Button title = "Add" onPress = { ()=> {alert("hey");}}>
-        </Button>
-        <Button title = "Calculate" color = "#F44336" onPress = { ()=> {alert("heey");}}>
         </Button>
       </View>
     );
