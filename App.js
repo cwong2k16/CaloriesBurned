@@ -34,23 +34,24 @@ class TopView extends React.Component{
 }
 
 class CenterView extends React.Component{
-  arrItems = {"Badminton":"7", "Basketball":"9.3", "Biking":"8", "Boxing":"10", "Calisthenics (Light)":"2.8",
-              "Calisthenics (Medium)":"3.8", "Calisthenics (Vigorous)":"8", "Football":"8", "Handball":"12", 
-              "Hiking":"9.5", "Jogging":"7", "Jump Rope (Light)":"11", "Jump Rope (Medium)":"12.3",
-              "Jump Rope (Fast)":"13", "Lifting Weights (Medium)":"4", "Lifting Weights (Vigorous)":"6",
-              "Mountain Climbing":"8", "Ping Pong":"4", "Running (10 mph)":"14.5", "Running (9 mph)":"12.8",
-              "Running (8 mph)":"11.8", "Running (7 mph)":"11", "Running (6 mph)":"9.8", "Running (5 mph)":"8.3",
-              "Skateboarding":"6", "Soccer":"10", "Stretching":"2.3", "Swimming (General)":"5.8",
-              "Swimming (Vigorous)":"9.8", "Tennis (Singles)":"8", "Walking 2 mph":"3", "Walking 3 mph":"4.5", 
-              "Walking 4 mph":"6"};
   state = {
     weight: '',
     height: '',
     age: '',
     minutes: '',
     exercise: '',
-    value: ''
+    value: '',
   };
+
+  arrItems = {"Badminton":"7", "Basketball":"9.3", "Biking":"8", "Boxing":"10", "Calisthenics (Light)":"2.8",
+    "Calisthenics (Medium)":"3.8", "Calisthenics (Vigorous)":"8", "Football":"8", "Handball":"12", 
+    "Hiking":"9.5", "Jogging":"7", "Jump Rope (Light)":"11", "Jump Rope (Medium)":"12.3",
+    "Jump Rope (Fast)":"13", "Lifting Weights (Medium)":"4", "Lifting Weights (Vigorous)":"6",
+    "Mountain Climbing":"8", "Ping Pong":"4", "Running (10 mph)":"14.5", "Running (9 mph)":"12.8",
+    "Running (8 mph)":"11.8", "Running (7 mph)":"11", "Running (6 mph)":"9.8", "Running (5 mph)":"8.3",
+    "Skateboarding":"6", "Soccer":"10", "Stretching":"2.3", "Swimming (General)":"5.8",
+    "Swimming (Vigorous)":"9.8", "Tennis (Singles)":"8", "Walking 2 mph":"3", "Walking 3 mph":"4.5", 
+    "Walking 4 mph":"6"};
 
   handleWeight = (data)=>{
     this.setState({weight: data});
@@ -81,8 +82,7 @@ class CenterView extends React.Component{
         <Picker   
           selectedValue={this.state.exercise}
           onValueChange={(itemValue, itemIndex) => this.setState({exercise: itemValue, value: itemIndex})}>
-          {/*
-          <Picker.Item label="Badminton" value="Badminton" data="7"/>
+          {/*<Picker.Item label="Badminton" value="Badminton" data="7"/>
           <Picker.Item label="Basketball" value="Basketball" data="9.3"/>
           <Picker.Item label="Biking" value="Biking" data="8" />
           <Picker.Item label="Boxing" value="Boxing" data="10" />
@@ -115,12 +115,16 @@ class CenterView extends React.Component{
           <Picker.Item label="Walking (2 mph)" value="Walking 2 mph" data="3"/>
           <Picker.Item label="Walking (3 mph)" value="Walking 3 mph" data="4.5"/>
           <Picker.Item label="Walking (4 mph)" value="Walking 4 mph" data="6"/>
+          {Object.keys(this.arrItems).map((key) => {
+            return (<Picker.Item label={key} value={key} key={key}/>)
+          })}  
           */}
-         {Object.keys(this.arrItems).map((key) => {
-          return (<Picker.Item label={key} value={key} key={key}/>) //if you have a bunch of keys value pair
-          })}
+          {Object.keys(this.arrItems).map((key) => {
+            return (<Picker.Item label={key} value={key} key={key}/>)
+          })}  
          }
         </Picker>
+        
         <Button title = "Add" onPress = { ()=> {
           alert("Weight: " + this.state.weight + "\n" +
                 "Height: " + this.state.height + "\n" +
