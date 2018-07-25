@@ -66,9 +66,25 @@ class CenterView extends React.Component{
     this.setState({value: data});
   };
 
+  getCaloriesBurned = (sex, weight, height, age, duration, value) => {
+    calories = value * duration;
+    // 		double mBMR = 66 + (6.23 * weight) + (12.7 * height) - (6.8 * age);
+    //    double fBMR = 655 + (4.35 * weight) + (4.7 * height) - (4.7 * age);
+    if(sex === "Male"){
+       BMR = 66 + (6.23 * weight) + (12.7 * height) - (6.8 * age);
+    }
+    else{
+       BMR = 655 + (4.35 * weight) + (4.7 * height) - (4.7 * age);
+    }
+    BMRScale = (BMR)/24;
+    multiplier = BMRScale * calories;
+    caloriesBurnedAfterFactors = multiplier/60;
+    return caloriesBurnedAfterFactors;
+  };
+
   render(){
     return(
-      <View>
+      <View style={{padding:5}}>
         <ImageComponent/>
         <Picker selectedValue={this.state.sex} 
                 onValueChange={(itemValue, itemIndex) => this.setState({sex: itemValue})}>
@@ -116,17 +132,21 @@ class CenterView extends React.Component{
           <Picker.Item label="Walking (3 mph)" value="Walking 3 mph" data="4.5"/>
           <Picker.Item label="Walking (4 mph)" value="Walking 4 mph" data="6"/> 
         </Picker>
-        
-        <Button title = "Add" onPress = { ()=> {
-          alert("Weight: " + this.state.weight + "\n" +
-                "Height: " + this.state.height + "\n" +
-                "Age: " + this.state.age + "\n" +
-                "Minutes: " + this.state.minutes + "\n" +
-                "Exercise: " + this.state.exercise + "\n" +
-                "Value: " + this.state.value + "\n" +
-                "Sex: " + this.state.sex );
-          }}>
-        </Button>
+        <View style={{alignItems: "center"}}>
+          <Button title = "Calculate" onPress = { ()=> {
+            calsBurned = this.getCaloriesBurned(this.state.sex, this.state.weight, this.state.height,
+                                                this.state.age, this.state.minutes, this.state.value);
+            alert("Weight: " + this.state.weight + "\n" +
+                  "Height: " + this.state.height + "\n" +
+                  "Age: " + this.state.age + "\n" +
+                  "Minutes: " + this.state.minutes + "\n" +
+                  "Exercise: " + this.state.exercise + "\n" +
+                  "Value: " + this.state.value + "\n" +
+                  "Sex: " + this.state.sex + "\n" +
+                  "Calories Burned: " + calsBurned.toFixed(0));
+            }}>
+          </Button>
+        </View>
       </View>
     );
   }
