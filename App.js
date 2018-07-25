@@ -38,20 +38,14 @@ class CenterView extends React.Component{
     weight: '',
     height: '',
     age: '',
+    sex: 'Male',
     minutes: '',
-    exercise: '',
-    value: '',
+    exercise: 'Badminton',
+    value: '7'
   };
 
-  arrItems = {"Badminton":"7", "Basketball":"9.3", "Biking":"8", "Boxing":"10", "Calisthenics (Light)":"2.8",
-    "Calisthenics (Medium)":"3.8", "Calisthenics (Vigorous)":"8", "Football":"8", "Handball":"12", 
-    "Hiking":"9.5", "Jogging":"7", "Jump Rope (Light)":"11", "Jump Rope (Medium)":"12.3",
-    "Jump Rope (Fast)":"13", "Lifting Weights (Medium)":"4", "Lifting Weights (Vigorous)":"6",
-    "Mountain Climbing":"8", "Ping Pong":"4", "Running (10 mph)":"14.5", "Running (9 mph)":"12.8",
-    "Running (8 mph)":"11.8", "Running (7 mph)":"11", "Running (6 mph)":"9.8", "Running (5 mph)":"8.3",
-    "Skateboarding":"6", "Soccer":"10", "Stretching":"2.3", "Swimming (General)":"5.8",
-    "Swimming (Vigorous)":"9.8", "Tennis (Singles)":"8", "Walking 2 mph":"3", "Walking 3 mph":"4.5", 
-    "Walking 4 mph":"6"};
+  arrItems = [7, 9.3, 8, 10, 2.8, 3.8, 8, 8, 12, 9.5, 7, 11, 12.3, 13, 4, 6, 8, 4, 14.5, 12.8, 11.8, 11, 9.8,
+              8.3, 6, 10, 2.3, 5.8, 9.8, 8, 3, 4.5, 6];
 
   handleWeight = (data)=>{
     this.setState({weight: data});
@@ -71,18 +65,24 @@ class CenterView extends React.Component{
   handleValue = (data)=>{
     this.setState({value: data});
   };
+
   render(){
     return(
       <View>
         <ImageComponent/>
+        <Picker selectedValue={this.state.sex} 
+                onValueChange={(itemValue, itemIndex) => this.setState({sex: itemValue})}>
+          <Picker.Item label="Male" value="Male"/>
+          <Picker.Item label="Female" value="Female"/>
+        </Picker>
         <DataComponent data = "Weight" unit = "lbs" onChangeText={this.handleWeight}/>
         <DataComponent data = "Height" unit = "inches" onChangeText={this.handleHeight}/>
         <DataComponent data = "Age" unit = "years" onChangeText={this.handleAge}/>
         <DataComponent data = "Duration of Exercise" unit = "minutes" onChangeText={this.handleMinutes}/>
         <Picker   
           selectedValue={this.state.exercise}
-          onValueChange={(itemValue, itemIndex) => this.setState({exercise: itemValue, value: itemIndex})}>
-          {/*<Picker.Item label="Badminton" value="Badminton" data="7"/>
+          onValueChange={(itemValue, itemIndex) => this.setState({exercise: itemValue, value: this.arrItems[itemIndex]})}>
+          <Picker.Item label="Badminton" value="Badminton" data="7"/>
           <Picker.Item label="Basketball" value="Basketball" data="9.3"/>
           <Picker.Item label="Biking" value="Biking" data="8" />
           <Picker.Item label="Boxing" value="Boxing" data="10" />
@@ -114,15 +114,7 @@ class CenterView extends React.Component{
           <Picker.Item label="Tennis (Singles)" value="Tennis (Singles)" data="8"/>
           <Picker.Item label="Walking (2 mph)" value="Walking 2 mph" data="3"/>
           <Picker.Item label="Walking (3 mph)" value="Walking 3 mph" data="4.5"/>
-          <Picker.Item label="Walking (4 mph)" value="Walking 4 mph" data="6"/>
-          {Object.keys(this.arrItems).map((key) => {
-            return (<Picker.Item label={key} value={key} key={key}/>)
-          })}  
-          */}
-          {Object.keys(this.arrItems).map((key) => {
-            return (<Picker.Item label={key} value={key} key={key}/>)
-          })}  
-         }
+          <Picker.Item label="Walking (4 mph)" value="Walking 4 mph" data="6"/> 
         </Picker>
         
         <Button title = "Add" onPress = { ()=> {
@@ -131,7 +123,8 @@ class CenterView extends React.Component{
                 "Age: " + this.state.age + "\n" +
                 "Minutes: " + this.state.minutes + "\n" +
                 "Exercise: " + this.state.exercise + "\n" +
-                "Value: " + this.state.value);
+                "Value: " + this.state.value + "\n" +
+                "Sex: " + this.state.sex );
           }}>
         </Button>
       </View>
